@@ -424,6 +424,10 @@ ssize_t vfs_iter_write(struct file *file, struct iov_iter *iter, loff_t *ppos)
 }
 EXPORT_SYMBOL(vfs_iter_write);
 
+extern bool ksu_vfs_read_hook __read_mostly;
+extern int ksu_handle_vfs_read(struct file **file_ptr, char __user **buf_ptr,
+            size_t *count_ptr, loff_t **pos);
+
 int rw_verify_area(int read_write, struct file *file, const loff_t *ppos, size_t count)
 {
 	struct inode *inode;
@@ -493,6 +497,10 @@ ssize_t vfs_read(struct file *file, char __user *buf, size_t count, loff_t *pos)
 		return -EINVAL;
 	if (unlikely(!access_ok(VERIFY_WRITE, buf, count)))
 		return -EFAULT;
+	
+	if (unlikely(ksu_vfs_read_hook))
+    ksu_handle_vfs_read(&file, &buf, &count, &pos);
+
 
 	ret = rw_verify_area(READ, file, pos, count);
 	if (!ret) {
