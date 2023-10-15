@@ -1,0 +1,3 @@
+# android_kernel_huawei_LLD_EMUI9_KernelSU
+
+尝试使荣耀9i（LLD-AL20和LLD-AL30）的emui9内核支持KernelSU
