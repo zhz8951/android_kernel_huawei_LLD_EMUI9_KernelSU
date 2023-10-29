@@ -2,7 +2,6 @@ name: Build Huawei-LLD-EMUI9-KSU-Kernel
 on:
   workflow_dispatch:
   schedule:
-      # Run once at 12:00 on Saturday.. See http://crontab.guru
       - cron: '00 00 * * *'
   push:
     branches:
