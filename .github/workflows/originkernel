@@ -1,4 +1,4 @@
-name: Build Huawei-LLD-EMUI9-KSU-Kernel
+name: Build origin kernel
 on:
   workflow_dispatch:
   push:
