@@ -51,6 +51,8 @@ jobs:
 
        rm -rf KernelSU
        rm -rf drivers/kernelsu
+       git config --global user.email "you@example.com"
+       git config --global user.name "zhz8951"
        git revert 9902996b37e75cbe703a146fb5c33dea382b16d6
        export PATH=$(pwd)/ToolChains/bin/:$PATH
        export ARCH=arm64
