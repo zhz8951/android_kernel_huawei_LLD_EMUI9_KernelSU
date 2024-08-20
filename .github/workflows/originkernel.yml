@@ -51,6 +51,7 @@ jobs:
 
        rm -rf KernelSU
        rm -rf drivers/kernelsu
+       git revert 9902996b37e75cbe703a146fb5c33dea382b16d6
        export PATH=$(pwd)/ToolChains/bin/:$PATH
        export ARCH=arm64
        export SUBARCH=arm64
